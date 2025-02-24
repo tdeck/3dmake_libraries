@@ -1,0 +1,19 @@
+#! /usr/bin/env bash
+# Arguments: URL [output name override]
+URL="$1"
+OUTPUT_NAME_OVERRIDE="$2"
+
+infile="$(basename "$URL")"
+stem="${infile%.tar.gz}" 
+outfile="$(realpath "./${OUTPUT_NAME_OVERRIDE:-"$stem".zip}")"
+
+tarfile="$(mktemp --suffix=.tar.gz)"
+tmpdir="$(mktemp -d)"
+trap 'rm -rf "$tmpdir"' EXIT # Cool little trick to delete this on exit
+trap 'rm -rf "$tmpfile"' EXIT # Cool little trick to delete this on exit
+
+pushd "$tmpdir"
+curl -L -o "$tarfile" "$URL"  
+tar -xzf "$tarfile" -C "$tmpdir"
+zip -r "$outfile" *
+popd
