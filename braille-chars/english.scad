@@ -24,15 +24,13 @@ module braille_label(chars, plate_thickness=2) {
     echo(str("Width for braille string ", chars, " is ", distance * char_count, "mm"));
     union() {
         for (count = [0:char_count-1]) {
-            translate(v = [0, count * distance, plate_thickness]) {
+            translate(v = [count * distance + distance/2, 0, plate_thickness]) {
                 _braille_char(chars[count]);
             }
         }
         if (plate_thickness > 0) {
-            translate(v = [0, -distance/2, 0]) {
-                color([0,0,1]) {
-                    cube(size = [plate_height, distance * (char_count+1), plate_thickness]);
-                }
+            color([0,0,1]) {
+                cube(size = [distance * (char_count+1), plate_height, plate_thickness]);
             }
         }
     }
@@ -43,8 +41,8 @@ module _letter(bitmap) {
     col_size = 3;
     bitmap_size = row_size * col_size;
     
-    function loc_x(loc) = floor(loc / row_size) * spacing + spacing;
-    function loc_y(loc) = loc % row_size * spacing  + (distance-spacing)/2;
+    function loc_x(loc) = loc % row_size * spacing  + (distance-spacing)/2;
+    function loc_y(loc) = (2 - floor(loc / row_size)) * spacing + spacing;
 
     for (loc = [0:bitmap_size - 1]) {
         if (bitmap[loc] != 0) {
