@@ -2,7 +2,7 @@
 
 ## Basic usage
 
-This library makes it easy to add a line of Braille to your 3D models.
+This library makes it easy to add a line of braille to your 3D models.
 For example, to write the message "hello world", you can use
 the following code:
 
@@ -17,7 +17,7 @@ The full set of options for the function is:
 module braille_label(chars, plate_thickness=2, lie_flat=false)
 ```
 
-Note that each Braille symbol needs to have its own entry in the list.
+Note that each braille symbol needs to have its own entry in the list.
 Space can be written as an empty string, a space in quotes, or the
 lowercase word "space".
 
@@ -38,11 +38,11 @@ dotXXX combinations are in lowercase.
 ## Geometry and orientation
 By default, `braille_label` will produce the given text on a 2mm thick
 vertical plate, with the dots facing toward you (in the -y direction).
-This is the most suitable for printing standalone Braille labels, as
-Braille printed vertically tends to have better tactile quality and
+This is the most suitable for printing standalone braille labels, as
+braille printed vertically tends to have better tactile quality and
 the dots are more resilient.
 
-You can also choose to have the Braille label lying flat, simply
+You can also choose to have the braille label lying flat, simply
 set `lie_flat=true` and you won't have to manually rotate it.
 
 You can control the thickness of the base plate with `plate_thickness`.
