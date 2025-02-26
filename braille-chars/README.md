@@ -60,6 +60,8 @@ The plate's lower left corner will be at the origin, and the plate will lie in
 the +x +y quadrant.
 
 ## Symbol reference
+Note that the same combination of dots may have multiple different aliases for convenience, and the same symbol name may appear in more than one group in this table.
+
 |Group | Symbol names
 |------|----------------
 Letters |`A` `B` `C` `D` `E` `F` `G` `H` `I` `J` `K` `L` `M` `N` `O` `P` `Q` `R` `S` `T` `U` `V` `W` `X` `Y` `Z` 
