@@ -85,3 +85,8 @@ Most of the work was done by others.
 - Adapted to be included as a library by Troy Deck
 
 License: http://creativecommons.org/licenses/by/3.0/
+
+## Contributing
+If you have a correction, yo can submit a PR or file an issue in GitHub.
+
+If you're interested in adding support for another language, I'd love to collaborate on that and am happy to accept PRs to add new language files.
