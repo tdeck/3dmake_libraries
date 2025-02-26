@@ -58,6 +58,10 @@ module _letter(bitmap) {
 
 
 module _braille_char(char) {
+    // The "DOCSTART", "DOCEND", "Group:" and "Also:" comments here are used to generate documentation
+    
+    // DOCSTART
+    // Group: Letters
     if (char == "A") {
         _letter([
             1,0,
@@ -214,6 +218,8 @@ module _braille_char(char) {
             0,1,
             1,1
         ]);
+
+    // Group: Strong groupsigns
     } else if (char == "CH") {
         _letter([
             1,0,
@@ -250,6 +256,44 @@ module _braille_char(char) {
             0,0,
             1,0
         ]);
+    } else if (char == "GH") {
+        _letter([
+            1,0,
+            1,0,
+            0,1
+        ]);
+    } else if (char == "ED") {
+        _letter([
+            1,1,
+            1,0,
+            0,1
+        ]);
+    } else if (char == "ER") {
+        _letter([
+            1,1,
+            1,1,
+            0,1
+        ]);
+    } else if (char == "OW") {
+        _letter([
+            0,1,
+            1,0,
+            0,1
+        ]);
+    } else if (char == "AR") {
+        _letter([
+            0,1,
+            0,1,
+            1,0
+        ]);
+    } else if (char == "ING") {
+        _letter([
+            0,1,
+            0,0,
+            1,1
+        ]);
+
+    // Group: Strong contractions
     } else if (char == "AND") {
         _letter([
             1,1,
@@ -280,42 +324,46 @@ module _braille_char(char) {
             1,1,
             1,1
         ]);
-    } else if (char == "IN") {
+
+    // Group: Strong wordsigns
+    } else if (char == "CHILD") {
         _letter([
+            1,0,
             0,0,
+            0,1
+        ]);
+    } else if (char == "SHALL") {
+        _letter([
+            1,1,
+            0,0,
+            0,1 
+        ]);
+    } else if (char == "THIS") {
+        _letter([
+            1,1,
             0,1,
-            1,0
+            0,1 
         ]);
-    } else if (char == "EN") {
+    } else if (char == "WHICH") {
         _letter([
-            0,0,
             1,0,
-            0,1
+            0,1,
+            0,1 
         ]);
-    } else if (char == "CON") {
+    } else if (char == "OUT") {
         _letter([
-            0,0,
-            1,1,
-            0,0
-        ]);
-    } else if (char == "DIS") {
-        _letter([
-            0,0,
-            1,1,
-            0,1
-        ]);
-    } else if (char == "COM") {
-        _letter([
-            0,0,
-            0,0,
-            1,1
-        ]);
-    } else if (char == "BE") {
-        _letter([
-            0,0,
             1,0,
-            1,0
+            1,1,
+            0,1 
         ]);
+    } else if (char == "STILL") {
+        _letter([
+            0,1,
+            0,0,
+            1,0 
+        ]);
+
+    // Group: Lower groupsigns
     } else if (char == "EA") {
         _letter([
             0,0,
@@ -334,12 +382,6 @@ module _braille_char(char) {
             1,1,
             0,0
         ]);
-    } else if (char == "DD") {
-        _letter([
-            0,0,
-            1,1,
-            0,1
-        ]);
     } else if (char == "FF") {
         _letter([
             0,0,
@@ -352,48 +394,64 @@ module _braille_char(char) {
             1,1,
             1,1
         ]);
-    } else if (char == "AR") {
+    } else if (char == "BE") { // Also: Lower wordsigns
         _letter([
-            0,1,
+            0,0,
+            1,0,
+            1,0
+        ]);
+    } else if (char == "CON") {
+        _letter([
+            0,0,
+            1,1,
+            0,0
+        ]);
+    } else if (char == "DIS") {
+        _letter([
+            0,0,
+            1,1,
+            0,1
+        ]);
+    } else if (char == "EN") {
+        _letter([
+            0,0,
+            1,0,
+            0,1
+        ]);
+    } else if (char == "IN") { // Also: Lower wordsigns
+        _letter([
+            0,0,
             0,1,
             1,0
         ]);
-    } else if (char == "BLE") {
+
+    // Group: Lower wordsigns
+    } else if (char == "ENOUGH") {
         _letter([
-            0,1,
-            0,1,
-            1,1
-        ]);
-    } else if (char == "ED") {
-        _letter([
-            1,1,
-            1,0,
-            0,1
-        ]);
-    } else if (char == "ER") {
-        _letter([
-            1,1,
-            1,1,
-            0,1
-        ]);
-    } else if (char == "GH") {
-        _letter([
-            1,0,
-            1,0,
-            0,1
-        ]);
-    } else if (char == "ING") {
-        _letter([
-            0,1,
             0,0,
-            1,1
-        ]);
-    } else if (char == "OW") {
-        _letter([
-            0,1,
             1,0,
-            0,1
+            0,1 
         ]);
+    } else if (char == "WERE") {
+        _letter([
+            0,0,
+            1,1,
+            1,1 
+        ]);
+    } else if (char == "HIS") {
+        _letter([
+            0,0,
+            1,0,
+            1,1 
+        ]);
+    } else if (char == "WAS") {
+        _letter([
+            0,0,
+            0,1,
+            1,1 
+        ]);
+
+    // Group: Indicators
     } else if (char == "cap") {
         _letter([
             0,0,
@@ -406,16 +464,42 @@ module _braille_char(char) {
             0,1,
             1,1
         ]);
+    } else if (char == "grade1") {
+        _letter([
+            0,0,
+            0,1,
+            0,1 
+        ]);
+
+    // Group: Punctuation
+    } else if (char == ",") {
+        _letter([
+            0,0,
+            1,0,
+            0,0 
+        ]);
     } else if (char == ".") {
         _letter([
             0,0,
             1,1,
             0,1
         ]);
-    } else if (char == "?") {
+    } else if (char == "'") {
         _letter([
             0,0,
             1,0,
+            1,0 
+        ]);
+    } else if (char == ":") {
+        _letter([
+            0,0,
+            1,1,
+            0,0 
+        ]);
+    } else if (char == "-") { // Also: Nemeth symbols
+        _letter([
+            0,0,
+            0,0,
             1,1
         ]);
     } else if (char == "!") {
@@ -424,18 +508,34 @@ module _braille_char(char) {
             1,1,
             1,0
         ]);
-    } else if (char == "-") {
+    } else if (char == "?") {
         _letter([
             0,0,
-            0,0,
+            1,0,
             1,1
         ]);
-    } else if (char == "quote") {
+    } else if (char == ";") {
+        _letter([
+            0,0,
+            1,0,
+            1,0 
+        ]);
+    } else if (char == "lquote") {
+        _letter([
+            0,0,
+            1,0,
+            1,1
+        ]);
+    } else if (char == "rquote") {
         _letter([
             0,0,
             0,1,
             1,1
         ]);
+    } else if (char == "" || char == " " || char == "space") {
+        // Don't need to do anything
+
+    // Group: Digits
     } else if (char == "1") {
         _letter([
             1,0,
@@ -496,55 +596,9 @@ module _braille_char(char) {
             1,1,
             0,0
         ]);
-    } else if (char == "dot4") {
-        _letter([
-            0,1,
-            0,0,
-            0,0
-        ]);
-    } else if (char == "dot5") {
-        _letter([
-            0,0,
-            0,1,
-            0,0
-        ]);
-    } else if (char == "dot45") {
-        _letter([
-            0,1,
-            0,1,
-            0,0
-        ]);
-     } else if (char == "dot456") {
-        _letter([
-            0,1,
-            0,1,
-            0,1
-        ]);
-        } else if (char == "dot56") {
-        _letter([
-            0,0,
-            0,1,
-            0,1 
-        ]);
-        } else if (char == "dot46") {
-        _letter([
-            0,1,
-            0,0,
-            0,1 
-        ]);
-        } else if (char == "n.") {
-        _letter([
-            0,1,
-            0,0,
-            0,1 
-        ]);
-        } else if (char == "grade1") {
-        _letter([
-            0,0,
-            0,1,
-            0,1 
-        ]);
-        } else if (char == "n1") {
+
+    // Group: Nemeth digits
+    } else if (char == "n1") {
         _letter([
             0,0,
             1,0,
@@ -604,14 +658,59 @@ module _braille_char(char) {
             0,1,
             1,1
         ]);
-    } else if (char == "+") {
+
+    // Group: Nemeth symbols
+    } else if (char == "n.") {
+        _letter([
+            0,1,
+            0,0,
+            0,1 
+        ]);
+    } else if (char == "n+") {
         _letter([
             0,1,
             0,0,
             1,1 
         ]);
-    } else if (char == "" || char == " " || char == "space") {
-        // Don't need to do anything
+
+    // Group: Other dot combinations
+    } else if (char == "dot4") {
+        _letter([
+            0,1,
+            0,0,
+            0,0
+        ]);
+    } else if (char == "dot5") {
+        _letter([
+            0,0,
+            0,1,
+            0,0
+        ]);
+    } else if (char == "dot45") {
+        _letter([
+            0,1,
+            0,1,
+            0,0
+        ]);
+     } else if (char == "dot456") {
+        _letter([
+            0,1,
+            0,1,
+            0,1
+        ]);
+    } else if (char == "dot56") {
+        _letter([
+            0,0,
+            0,1,
+            0,1 
+        ]);
+    } else if (char == "dot46") {
+        _letter([
+            0,1,
+            0,0,
+            0,1 
+        ]);
+    // DOCEND
     } else {
         assert(false, str("Invalid Character: ", char));
     }
