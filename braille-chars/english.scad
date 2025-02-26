@@ -17,12 +17,15 @@ distance = 3.75 + spacing;
 
 plate_height = 10; // This is the character cell height (i.e. the length of the 3 dots + padding)
 
-module braille_label(chars, plate_thickness=2) {
+module braille_label(chars, plate_thickness=2, lie_flat=false) {
     assert(is_list(chars), "braille_label accepts a list of characters");
     char_count = len(chars);
 
     echo(str("Width for braille string ", chars, " is ", distance * char_count, "mm"));
-    union() {
+
+    rotation = lie_flat ? [0, 0, 0] : [90, 0, 0];
+
+    rotate(rotation) {
         for (count = [0:char_count-1]) {
             translate(v = [count * distance + distance/2, 0, plate_thickness]) {
                 _braille_char(chars[count]);
