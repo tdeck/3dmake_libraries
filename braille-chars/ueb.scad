@@ -11,9 +11,9 @@ License: http://creativecommons.org/licenses/by/3.0/
 
 
 // mm sizes from http://dots.physics.orst.edu/gs_layout.html
-radius = 0.25;
-spacing = 2.5;
-distance = 3.75 + spacing;
+radius = .6;
+spacing = 2.34; // Spacing between dot centers in the same cell
+distance = 6.2; // Spacing between dot centers in adjacent cells
 
 plate_height = 10; // This is the character cell height (i.e. the length of the 3 dots + padding)
 
@@ -44,13 +44,15 @@ module _letter(bitmap) {
     col_size = 3;
     bitmap_size = row_size * col_size;
     
+    vertical_padding = (plate_height - 2*radius - 2*spacing) / 2;
+    
     function loc_x(loc) = loc % row_size * spacing  + (distance-spacing)/2;
-    function loc_y(loc) = (2 - floor(loc / row_size)) * spacing + spacing;
+    function loc_y(loc) = (2 - floor(loc / row_size)) * spacing + radius + vertical_padding;
 
     for (loc = [0:bitmap_size - 1]) {
         if (bitmap[loc] != 0) {
             translate(v = [loc_x(loc), loc_y(loc), 0]) {
-                sphere(r=radius, $fa=7);
+                sphere(r=radius, $fs=.4);
             }
         }
     }
