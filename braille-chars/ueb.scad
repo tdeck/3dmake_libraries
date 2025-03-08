@@ -11,17 +11,22 @@ License: http://creativecommons.org/licenses/by/3.0/
 
 
 // mm sizes from http://dots.physics.orst.edu/gs_layout.html
-radius = .6;
+dot_height = .6;
+dot_base_width = 1.44;
 spacing = 2.34; // Spacing between dot centers in the same cell
 distance = 6.2; // Spacing between dot centers in adjacent cells
 
 plate_height = 10; // This is the character cell height (i.e. the length of the 3 dots + padding)
 
+function braille_text_width(chars_or_count) =
+    (is_num(chars_or_count) ? chars_or_count : len(chars_or_count)) * distance;
+
+function braille_plate_width(chars_or_count) =
+    braille_text_width(chars_or_count) + distance;
+
 module braille_label(chars, plate_thickness=2, lie_flat=false) {
     assert(is_list(chars), "braille_label accepts a list of characters");
     char_count = len(chars);
-
-    echo(str("Width for braille string ", chars, " is ", distance * char_count, "mm"));
 
     rotation = lie_flat ? [0, 0, 0] : [90, 0, 0];
 
@@ -44,15 +49,17 @@ module _letter(bitmap) {
     col_size = 3;
     bitmap_size = row_size * col_size;
     
-    vertical_padding = (plate_height - 2*radius - 2*spacing) / 2;
+    vertical_padding = (plate_height - dot_base_width - 2*spacing) / 2;
     
     function loc_x(loc) = loc % row_size * spacing  + (distance-spacing)/2;
-    function loc_y(loc) = (2 - floor(loc / row_size)) * spacing + radius + vertical_padding;
+    function loc_y(loc) = (2 - floor(loc / row_size)) * spacing + dot_base_width/2 + vertical_padding;
 
     for (loc = [0:bitmap_size - 1]) {
         if (bitmap[loc] != 0) {
             translate(v = [loc_x(loc), loc_y(loc), 0]) {
-                sphere(r=radius, $fs=.4);
+                scale([1, 1, 2*dot_height/dot_base_width]) {
+                    sphere(d=dot_base_width, $fs=.4);
+                }
             }
         }
     }
