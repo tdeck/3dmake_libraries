@@ -42,6 +42,11 @@ This is the most suitable for printing standalone braille labels, as
 braille printed vertically tends to have better tactile quality and
 the dots are more resilient.
 
+The actual Braille will be offset by one half cell of blank base
+plate on either end. The function `braille_plate_width` will return the width
+of the base plate with the given braille character string. It can also accept
+an integer length as input.
+
 You can also choose to have the braille label lying flat, simply
 set `lie_flat=true` and you won't have to manually rotate it.
 
